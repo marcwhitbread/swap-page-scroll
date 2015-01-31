@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  overflow-y: scroll;
+}
+#switch {
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  width: 40px;
+  z-index: 100;
+}
+#switch .item {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background: #eee;
+  cursor: pointer;
+}
+#switch .item:hover {
+  background: #aaa;
+}
+.layer {
+  top: 0;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  max-height: 100%;
+}
+.layer .page {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+.layer.layer1 .page {
+  min-height: 1400px;
+  background: rgba(50, 50, 50, 0.5);
+}
+.layer.layer2 .page {
+  min-height: 800px;
+  background: rgba(50, 50, 50, 0.5);
+}
+.layer.layer3 .page {
+  min-height: 1000px;
+  background: rgba(50, 50, 50, 0.5);
+}
+.layer.current {
+  position: relative;
+  max-height: none;
+}
