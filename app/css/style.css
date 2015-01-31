@@ -1,13 +1,15 @@
 body {
   margin: 0;
   overflow-y: scroll;
+  color: #fff;
 }
 #switch {
   position: fixed;
-  top: 5px;
+  top: 0;
   left: 5px;
   width: 40px;
-  z-index: 100;
+  z-index: 9999;
+  color: #000;
 }
 #switch .item {
   position: relative;
@@ -15,6 +17,7 @@ body {
   height: 40px;
   background: #eee;
   cursor: pointer;
+  margin: 5px 0 0 0;
 }
 #switch .item:hover {
   background: #aaa;
@@ -24,26 +27,81 @@ body {
   width: 100%;
   position: absolute;
   overflow: hidden;
-  max-height: 100%;
+  z-index: 1;
 }
-.layer .page {
+.layer .center {
   width: 100%;
   max-width: 1024px;
   margin: 0 auto;
 }
-.layer.layer1 .page {
+.layer .center .inner {
+  width: 100%;
+}
+.layer.main {
+  z-index: 9997;
+}
+.layer.main .center .slider {
+  width: 100%;
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  -webkit-transition: -webkit-transform 600ms linear;
+  -moz-transition: -moz-transform 600ms linear;
+  -ms-transition: -ms-transform 600ms linear;
+  -o-transition: -o-transform 600ms linear;
+}
+.layer.main .center .slider .content-layer {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+.layer.main .center .slider .content-layer.main {
+  position: relative;
+  background: #323232;
   min-height: 1400px;
-  background: rgba(50, 50, 50, 0.5);
+  z-index: 9998;
 }
-.layer.layer2 .page {
+.layer.main .center .slider .content-layer.overlay-1 {
+  background: #c8c8c8;
+  min-height: 1900px;
+}
+.layer.menu {
+  z-index: 9996;
+}
+.layer.menu .center .inner {
+  width: 210px;
   min-height: 800px;
-  background: rgba(50, 50, 50, 0.5);
+  background: #646464;
 }
-.layer.layer3 .page {
+.layer.overlay .center .inner {
   min-height: 1000px;
-  background: rgba(50, 50, 50, 0.5);
+  background: #969696;
 }
-.layer.current {
+body.menu-open .layer.menu {
   position: relative;
   max-height: none;
+  z-index: 9998;
+  -webkit-transition: z-index 600ms linear 600ms;
+  -moz-transition: z-index 600ms linear 600ms;
+  -ms-transition: z-index 600ms linear 600ms;
+  -o-transition: z-index 600ms linear 600ms;
+  transition: z-index 600ms linear 600ms;
 }
+body.menu-open .layer.main .center .slider {
+  -webkit-transform: translateX(210px);
+  -moz-transform: translateX(210px);
+  -ms-transform: translateX(210px);
+  -o-transform: translateX(210px);
+}
+body.overlay-1 .layer.main .center .slider .content-layer.main {
+  position: fixed;
+  z-index: 1;
+}
+body.overlay-1 .layer.main .center .slider .content-layer.overlay-1 {
+  position: relative;
+  z-index: 9998;
+}
+

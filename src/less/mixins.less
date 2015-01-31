@@ -1,0 +1,58 @@
+.animation(@string) {
+	-webkit-animation: @string;
+	animation: @string;
+}
+
+.animation-delay(@delay) {
+	-webkit-animation-delay: @delay;
+    animation-delay: @delay;
+}
+
+.transform(@string) {
+	-webkit-transform: @string;
+	-moz-transform: @string;
+	-ms-transform: @string;
+	-o-transform: @string;
+}
+
+.transition(@transition) {
+	-webkit-transition: @transition;  
+	-moz-transition: @transition;
+	-ms-transition: @transition; 
+	-o-transition: @transition;  
+	transition: @transition;
+}
+
+.transition-delay(@delay) {
+	-webkit-transition-delay: @delay;
+    transition-delay: @delay;
+}
+
+.transition-duration(@duration) {
+	-webkit-transition-duration: @duration;
+    transition-duration: @duration;
+}
+
+.transition-transform(@transition) {
+	-webkit-transition: -webkit-transform @transition;
+	-moz-transition: -moz-transform @transition;
+	-ms-transition: -ms-transform @transition;
+	-o-transition: -o-transform @transition;
+}
+
+.box-shadow(@shadow) {
+	-webkit-box-shadow: @shadow;
+	box-shadow: @shadow;
+}
+
+.border-radius(@radius) {
+	-webkit-border-radius: @radius;
+	border-radius: @radius;
+}
+
+.background-gradient(@from, @to) {
+	background: -webkit-gradient(radial, center center, 0, center center, 10, from(@from), to(@to));
+	background: -webkit-radial-gradient(circle, @from, @to);
+	background: -moz-radial-gradient(circle, @from, @to);
+	background: -ms-radial-gradient(circle, @from, @to);
+}

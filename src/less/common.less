@@ -1,14 +1,18 @@
+@import "mixins.less";
+
 body {
 	margin: 0;
 	overflow-y: scroll;
+	color: #fff;
 }
 
 #switch {
 	position: fixed;
-	top: 5px;
+	top: 0;
 	left: 5px;
 	width: 40px;
-	z-index: 100;
+	z-index: 9999;
+	color: #000;
 	
 	.item {
 		position: relative;
@@ -16,6 +20,7 @@ body {
 		height: 40px;
 		background: #eee;
 		cursor: pointer;
+		margin: 5px 0 0 0;
 		
 		&:hover {
 			background: #aaa;
@@ -28,40 +33,118 @@ body {
 	width: 100%;
 	position: absolute;
 	overflow: hidden;
-	max-height: 100%;
+	z-index: 1;
 	
-	.page {
+	.center {
 		width: 100%;
 		max-width: 1024px;
 		margin: 0 auto;
-	}
-	
-	&.layer1 {
 		
-		.page {
-			min-height: 1400px;
-			background: rgba(50, 50, 50, 0.5);
+		.inner {
+			width: 100%;
+		}
+	}
+
+	&.main {
+		z-index: 9997;
+		
+		.center {
+			
+			.slider {
+				width: 100%;
+				
+				.transform(translateX(0));
+				.transition-transform(600ms linear);
+				
+				.content-layer {
+					position: fixed;
+					top: 0;
+					width: 100%;
+					overflow: hidden;
+					z-index: 1;
+					
+					&.main {
+						position: relative;
+						background: rgba(50, 50, 50, 1);
+						min-height: 1400px;
+						z-index: 9998;
+					}
+					
+					&.overlay-1 {
+						background: rgba(200, 200, 200, 1);
+						min-height: 1900px;
+					}
+				}
+			}
 		}
 	}
 	
-	&.layer2 {
+	&.menu {
+		z-index: 9996;
 		
-		.page {
-			min-height: 800px;
-			background: rgba(50, 50, 50, 0.5);
+		.center {
+			
+			.inner {
+				width: 210px;
+				min-height: 800px;
+				background: rgba(100, 100, 100, 1);
+			}
 		}
 	}
 	
-	&.layer3 {
+	&.overlay {
 		
-		.page {
-			min-height: 1000px;
-			background: rgba(50, 50, 50, 0.5);
+		.center {
+			
+			.inner {
+				min-height: 1000px;
+				background: rgba(150, 150, 150, 1);
+			}
 		}
 	}
+}
+
+body.menu-open {
 	
-	&.current {
+	.layer.menu {
 		position: relative;
 		max-height: none;
+		z-index: 9998;
+		.transition(z-index 600ms linear 600ms);
+	}
+	
+	.layer.main {
+		
+		.center {
+			
+			.slider {
+				.transform(translateX(210px));
+			}
+		}
+	}
+}
+
+body.overlay-1 {
+	
+	.layer.main {
+		
+		.center {
+			
+			.slider {
+						
+				.content-layer {
+					
+					&.main {
+						position: fixed;
+						z-index: 1;
+					}
+					
+					&.overlay-1 {
+						position: relative;
+						z-index: 9998;
+					}
+				}
+			}
+		}
 	}
 }
